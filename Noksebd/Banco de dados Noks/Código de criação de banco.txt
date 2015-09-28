@@ -1,0 +1,150 @@
+/*
+Created: 23/07/2015
+Modified: 18/09/2015
+Model: MySQL 5.5
+Database: MySQL 5.5
+*/
+
+-- Create tables section -------------------------------------------------
+
+-- Table Turma
+
+CREATE TABLE Turma
+(
+  Cod_turma Char(3) NOT NULL,
+  Cod_instituicao Int,
+  Nom_turma Varchar(32) NOT NULL,
+  Gr_ensino Varchar(20) NOT NULL,
+  Flg_aproved Bool NOT NULL
+)
+;
+
+ALTER TABLE Turma ADD PRIMARY KEY (Cod_turma)
+;
+
+CREATE INDEX IX_Relationship1 ON Turma (Cod_instituicao)
+;
+
+-- Table Aluno
+
+CREATE TABLE Aluno
+(
+  Login Char(6) NOT NULL,
+  Cod_turma Char(3) NOT NULL,
+  Cod_aluno Char(3) NOT NULL,
+  Nom_aluno Varchar(64) NOT NULL,
+  Flg_admin Bool NOT NULL,
+  Snh_entrada Varchar(16) NOT NULL,
+  Email Varchar(64) NOT NULL
+)
+;
+
+ALTER TABLE Aluno ADD PRIMARY KEY (Login)
+;
+
+CREATE INDEX IX_Relationship1 ON Aluno (Cod_turma)
+;
+
+-- Table Disciplinas
+
+CREATE TABLE Disciplinas
+(
+  Cod_disciplina Int NOT NULL AUTO_INCREMENT,
+  Cod_turma Char(3) NOT NULL,
+  Nom_disciplina Varchar(32) NOT NULL,
+ PRIMARY KEY (Cod_disciplina,Cod_turma)
+)
+;
+
+-- Table Atividade
+
+CREATE TABLE Atividade
+(
+  Cod_atividade Int NOT NULL AUTO_INCREMENT,
+  Cod_disciplina Int NOT NULL,
+  Cod_turma Char(3) NOT NULL,
+  Des_atividade Text NOT NULL,
+  Vlr_atividade Double NOT NULL,
+ PRIMARY KEY (Cod_atividade,Cod_disciplina,Cod_turma)
+)
+;
+
+-- Table Nota
+
+CREATE TABLE Nota
+(
+  Cod_disciplina Int NOT NULL,
+  Cod_atividade Int NOT NULL,
+  Cod_turma Char(3) NOT NULL,
+  Login Char(6) NOT NULL,
+  Pts_adquiridos Double NOT NULL
+)
+;
+
+ALTER TABLE Nota ADD PRIMARY KEY (Cod_atividade,Cod_disciplina,Cod_turma,Login)
+;
+
+-- Table Evento
+
+CREATE TABLE Evento
+(
+  Cod_evento Int NOT NULL AUTO_INCREMENT,
+  Cod_turma Char(3) NOT NULL,
+  Nom_evento Varchar(64) NOT NULL,
+  Dat_evento Date NOT NULL,
+  Des_evento Text,
+ PRIMARY KEY (Cod_evento,Cod_turma)
+)
+;
+
+-- Table Arquivo
+
+CREATE TABLE Arquivo
+(
+  Cod_arquivo Int NOT NULL AUTO_INCREMENT,
+  Cod_turma Char(3) NOT NULL,
+  Nom_arquivo Varchar(64) NOT NULL,
+  Mir_arquivo Varchar(128) NOT NULL,
+  Des_arquivo Text,
+ PRIMARY KEY (Cod_arquivo,Cod_turma)
+)
+;
+
+-- Table Instituicao
+
+CREATE TABLE Instituicao
+(
+  Cod_instituicao Int NOT NULL AUTO_INCREMENT,
+  Nom_instituicao Varchar(64) NOT NULL,
+  Loc_instituicao Varchar(64) NOT NULL,
+  Flg_aproved Bool NOT NULL,
+ PRIMARY KEY (Cod_instituicao)
+)
+;
+
+-- Create relationships section ------------------------------------------------- 
+
+ALTER TABLE Aluno ADD CONSTRAINT temAluno FOREIGN KEY (Cod_turma) REFERENCES Turma (Cod_turma) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE Disciplinas ADD CONSTRAINT temDisciplina FOREIGN KEY (Cod_turma) REFERENCES Turma (Cod_turma) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE Atividade ADD CONSTRAINT promoveAtividade FOREIGN KEY (Cod_disciplina, Cod_turma) REFERENCES Disciplinas (Cod_disciplina, Cod_turma) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE Nota ADD CONSTRAINT promoveNota FOREIGN KEY (Cod_atividade, Cod_disciplina, Cod_turma) REFERENCES Atividade (Cod_atividade, Cod_disciplina, Cod_turma) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE Nota ADD CONSTRAINT obtemNota FOREIGN KEY (Login) REFERENCES Aluno (Login) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE Arquivo ADD CONSTRAINT temArquivo FOREIGN KEY (Cod_turma) REFERENCES Turma (Cod_turma) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE Evento ADD CONSTRAINT temEvento FOREIGN KEY (Cod_turma) REFERENCES Turma (Cod_turma) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
+ALTER TABLE Turma ADD CONSTRAINT Relationship1 FOREIGN KEY (Cod_instituicao) REFERENCES Instituicao (Cod_instituicao) ON DELETE NO ACTION ON UPDATE NO ACTION
+;
+
