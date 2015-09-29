@@ -46,7 +46,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 	</head>
 	<body>
-		<div id="logedIn"><a href="perfil.php"><?php echo $aluno ?></a> | <a href="php/sessionFinish.php">Logout</a></div>
+		<div id="logedIn"><img src="images/usIcon.png" height="10" width="10" /><a href="perfil.php"><?php echo "  ".$aluno ?></a> &nbsp;<span style="color:#fff;font-size:15px;">|</span> &nbsp;<a href="php/sessionFinish.php">Logout</a></div>
 	<!-- Header -->
 		<div id="header">
 			<div class="container">

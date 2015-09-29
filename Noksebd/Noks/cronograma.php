@@ -17,8 +17,9 @@
 	
 	$array = mysql_fetch_array($sql);
 	$aluno = $array['Nom_aluno']; //Nome do aluno, colocado na página
+	$turma = $array['Cod_turma'];
 	
-	$procuraEvento = mysql_query("SELECT * FROM `evento`"); // Reune todos os eventos
+	$procuraEvento = mysql_query("SELECT * FROM `evento` WHERE Cod_turma = '$turma'"); // Reune todos os eventos
 ?>
 
 <!DOCTYPE HTML>
@@ -56,7 +57,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 	</head>
 	<body>
-		<div id="logedIn"><a href="perfil.php"><?php echo $aluno ?></a> | <a href="php/sessionFinish.php">Logout</a></div>
+		<div id="logedIn"><img src="images/usIcon.png" height="10" width="10" /><a href="perfil.php">&nbsp;<?php echo "  ".$aluno ?></a>&nbsp;<b class="superflue">|</b> &nbsp;<a href="php/sessionFinish.php">Logout</a></div>
 	<!-- Header -->
 		<div id="header">
 			<div class="container">
@@ -100,7 +101,7 @@
 		
 		<div id="mascara"></div>
 	<!-- Main -->
-		<div id="main">
+		<div id="main" class="padded">
 			<div class="container">
 				<div class="row">
 

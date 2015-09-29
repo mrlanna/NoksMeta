@@ -52,7 +52,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 	</head>
 	<body>
-		<div id="logedIn"><a href="perfil.php"><?php echo $aluno ?></a> | <a href="php/sessionFinish.php">Logout</a></div>
+		<div id="logedIn"><img src="images/usIcon.png" height="10" width="10" /><a href="perfil.php"><?php echo "  ".$aluno ?></a> &nbsp;<span style="color:#fff;font-size:15px;">|</span> &nbsp;<a href="php/sessionFinish.php">Logout</a></div>
 		<!-- Header -->
 		<div id="header">
 			<div class="container">
@@ -107,7 +107,6 @@
 								</header>
 								<form action="php/passChange.php" id="upArquivo" name="upload" method="POST" enctype="multipart/form-data"><center>
 									<p><input type="password" required="required" id="atual" name="atual" maxlength="16" minlength="4" size = "36" placeholder="Digite a senha atual"/></p>
-									<p><input type="password" required="required" id="rAtual" name="rAtual" maxlength="16" minlength="4" size = "36" placeholder="Confirme sua senha"/></p>
 									<p><input type="password" required="required" id="nova" name="nova" maxlength="16" minlength="4" size = "36" placeholder="Digite sua nova senha"/></p>
 									<p><input type="password" required="required" id="rNova" name="rNova" maxlength="16" minlength="4" size = "36" placeholder="Confirme sua nova senha"/></p>
 									<p><center><input type="submit" value="Alterar" name="alterar" class="button_full"></center></p>

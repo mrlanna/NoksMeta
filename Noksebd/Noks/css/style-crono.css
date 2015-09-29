@@ -46,10 +46,6 @@ position:relative;
     width: 64px;
 }
 
-.calendar tbody td.active {
-    border: 2px solid #711112;
-}
-
 .calendar td {
     border: 2px solid transparent;
     border-radius: 50%;

@@ -4,7 +4,10 @@
     $login = $_SESSION['Login'];
 
     $sql = mysql_query("SELECT * FROM aluno WHERE Login = '$login'");
-    if($_POST['atual'] === $_POST['rAtual'])
+	$array = mysql_fetch_array($sql);
+	$senha = $array['Snh_entrada'];
+	
+    if($_POST['atual'] === $senha)
     {
         if($_POST['nova'] === $_POST['rNova'])
         {

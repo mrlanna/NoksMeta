@@ -40,10 +40,12 @@
 		<meta name="keywords" content="" />
 		<link href='http://fonts.googleapis.com/css?family=Oxygen:400,300,700' rel='stylesheet' type='text/css'>
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script type="text/javascript" src="https://js.live.net/v5.0/OneDrive.js" id="onedrive-js" client-id="000000004816E454"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-panels.min.js"></script>
 		<script src="js/init.js"></script>
+		<script src="js/arquivos.js"></script>
 		<noscript>
 			<link rel="stylesheet" href="css/skel-noscript.css" />
 			<link rel="stylesheet" href="css/style.css" />
@@ -52,7 +54,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
 	</head>
 	<body>
-		<div id="logedIn"><a href="perfil.php"><?php echo $aluno ?></a> | <a href="php/sessionFinish.php">Logout</a></div>
+		<div id="logedIn"><img src="images/usIcon.png" height="10" width="10" /><a href="perfil.php"><?php echo "  ".$aluno ?></a> &nbsp;<span style="color:#fff;font-size:15px;">|</span> &nbsp;<a href="php/sessionFinish.php">Logout</a></div>
 	<!-- Header -->
 		<div id="header">
 			<div class="container">
@@ -114,10 +116,10 @@
 								<form action="php/upload.php" id="upArquivo" name="upload" method="POST" enctype="multipart/form-data"><center>
 									<p><input type="text" required="required" name="text" maxlength="64" minlength="4" size = "36" placeholder="Nome do arquivo"/></p>
 									<p><textarea form="upArquivo" rows="5" cols="35" required="required" placeholder="Descrição do arquivo"></textarea></p>
-									<input type="file" name="arquivo" required="required">
-									<p><center><input type="submit" value="Upload" name="botao" class="button"></center></p>
-								</center></form>
-							</section>
+									<input type="file" name="arquivo file" required="required" type="file">
+									<p><input type="submit" value="Upload" name="botao" class="button"></p>
+                                    <div id="save"></div>
+                            </section>
 						</div>
 					<!-- Sidebar -->
 						

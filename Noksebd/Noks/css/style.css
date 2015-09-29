@@ -460,7 +460,7 @@
 			position: absolute;
 			font-size: 12px;
 			background-color: #711112;
-			border-radius: 25px;
+			border-radius: 10px;
 			padding-left: 15px;
 			padding-right: 15px;
 			padding-top: 3px;
@@ -469,6 +469,14 @@
 			right: 10px;
 			z-index:9999;
 			color: #999;
+		}
+		
+		#logedIn .divider
+		{
+			position: relative;
+			height: 100%;
+			width: 1px;
+			background-color:#fff;
 		}
 		
 		#logedIn a
@@ -480,7 +488,6 @@
 		#logedIn a:hover
 		{
 			transition-duration: 1s;
-			text-decoration:underline;
 			color: #fff;
 		}
 		
@@ -510,6 +517,13 @@
     top:0;
     z-index:9000;
     background-color:#000;
+}
+
+.superflue
+{
+	text-decoration:none;
+	color:#fff;
+	font-size:15px;
 }
 
 .fechar{display:block; text-align:right; text-decoration:bold; font-size:20px;}
