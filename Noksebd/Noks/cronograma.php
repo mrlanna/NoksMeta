@@ -40,7 +40,7 @@
 		<link rel="stylesheet" href="http://weloveiconfonts.com/api/?family=fontawesome">
 		<link rel="stylesheet" href="css/style-crono.css">
 		<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
-		<script src="js/simplecalendar.js" type="text/javascript"></script>
+		<script src="js/simplecalendar.js" type="text/javascript" charset="utf-8"></script>
 		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 		<script src="js/skel.min.js"></script>
