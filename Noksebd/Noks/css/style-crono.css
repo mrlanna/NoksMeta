@@ -54,7 +54,7 @@ position:relative;
 
 .calendar td {
     border: 2px solid transparent;
-    border-radius: 50%;
+    border-radius: 30%;
     height: 64px;
     line-height: 64px;
     text-align: center;
@@ -74,7 +74,7 @@ position:relative;
 
 .event:after {
     background: #711112;
-    border-radius: 50%;
+    border-radius: 30%;
     bottom: 8px;
     display: block;
     content: '';

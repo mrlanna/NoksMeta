@@ -64,9 +64,7 @@ if(isset($_POST['registroAluno'])){ // Se o usuário clicou em Cadastrar
 		echo ("<SCRIPT LANGUAGE='JavaScript'>window.alert('Existe um ou mais campo(s) vazio(s).');window.location.href='index.php';</SCRIPT>");
     }
 }
-
 // Registro de turma -------------------------------------------------------------------------------------------------------------------------------------------
-
 if(isset($_POST['registroTurma'])){ // Se o usuário clicou em Cadastrar
 	$nomeTurma=mysql_real_escape_string($_POST['username']); // Cria varíavel nomeTurma
 	$instituicao=mysql_real_escape_string($_POST['instituicao']); // Cria varíavel instituicao
@@ -90,7 +88,7 @@ if(isset($_POST['registroTurma'])){ // Se o usuário clicou em Cadastrar
 				$array=explode(";",$disciplinas);
                 $array_tam = sizeof($array);
                 for ($i = 0; $i < $array_tam; $i++){
-                    mysql_query("INSERT INTO disciplinas(Nom_disciplina, Cod_instituicao, Cod_turma) VALUES ('$array[$i]', $instituicao,'$Cod_turma')");
+                    mysql_query("INSERT INTO disciplinas(Cod_disciplina, Nom_disciplina, Cod_turma) VALUES (0,'$array[$i]','$Cod_turma')");
 				}
 				
                 //FIM
@@ -151,7 +149,6 @@ if(isset($_POST['registroTurma'])){ // Se o usuário clicou em Cadastrar
         <div class="window" id="registroturma" align="center">
 			<a href="#" class="fechar">X</a>
 			<span style="font-size:30px; margin-bottom:20px;"><h1>Registro da turma</h1></span>
-
 			<form id="loginform" name="loginform" method="post" action="index.php" style="margin-bottom:0;">
 				<input type="text" name="username" id="username" class="txtfield" tabindex="1" placeholder="Digite o nome da turma"><br>
 				<select name="instituicao" id="instituicao" class="txtfield" tabindex="1">
@@ -178,22 +175,17 @@ if(isset($_POST['registroTurma'])){ // Se o usuário clicou em Cadastrar
                 <textarea name="disciplinas" id="disciplina" class="textfield" placeholder="Insira as disciplinas separadas por ponto e vírgula (;)"></textarea><br>
 				<input type="email" name="email" id="email" class="txtfield" tabindex="1" placeholder="Digite um e-mail para contato    "><br>
 				<div class="center"><input type="submit" name="registroTurma" id="loginbtn" class="flatbtn-blu hidemodal" value="Registrar" tabindex="3"></div>
-
 			</form>
 		</div>
         <!-- instituição ------------------------------------------------------------------------------------------------------------------------------------------------------------------->
 		<div class="window" id="registroinst" align="center">
 			<a href="#" class="fechar">X</a>
 			<span style="font-size:30px; margin-bottom:20px;"><h1>Registro da Instituição</h1></span>
-
 			<form method="post" action="index.php" style="margin-bottom:0;">
 				<input type="text" name="nomeInstituicao" id="nomeInstituicao" class="txtfield" tabindex="1" placeholder="Nome da instituição"><br>
-
                 <input type="text" name="cidadeInstituicao" id="cidadeInstituicao" class="txtfield" tabindex="1" placeholder="Cidade da Instituição"><br>
-
                 <input type="email" name="emailInstituicao" id="emailInstituicao" class="txtfield" tabindex="1" placeholder="Digite um e-mail para contato "><br>
 				<div class="center"><input type="submit" name="registraInstituicao" id="registraInstituicao" class="flatbtn-blu hidemodal" value="Registrar" tabindex="3"></div>
-
 			</form>
 		</div>
         <!-- aluno ------------------------------------------------------------------------------------------------------------------------------------------------------------------------>
@@ -419,9 +411,5 @@ if(isset($_POST['registroTurma'])){ // Se o usuário clicou em Cadastrar
 					</div>
 				</div>
 			</footer>
-
-
-
-
-    </body>
+	</body>
 </html>
