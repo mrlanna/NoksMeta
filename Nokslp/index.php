@@ -90,7 +90,7 @@ if(isset($_POST['registroTurma'])){ // Se o usuário clicou em Cadastrar
 				$array=explode(";",$disciplinas);
                 $array_tam = sizeof($array);
                 for ($i = 0; $i < $array_tam; $i++){
-                    mysql_query("INSERT INTO disciplinas(Nom_disciplina, Cod_instituicao, Cod_turma) VALUES ('$array[$i]', $instituicao,'$Cod_turma')");
+                    mysql_query("INSERT INTO disciplinas(Cod_disciplina, Nom_disciplina, Cod_turma) VALUES (0,'$array[$i]','$Cod_turma')");
 				}
 				
                 //FIM
@@ -419,9 +419,5 @@ if(isset($_POST['registroTurma'])){ // Se o usuário clicou em Cadastrar
 					</div>
 				</div>
 			</footer>
-
-
-
-
-    </body>
+	</body>
 </html>
